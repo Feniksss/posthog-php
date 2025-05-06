@@ -1,11 +1,11 @@
 {
-	"name": "posthog/posthog-php",
+	"name": "feniksss/posthog-php",
 	"version": "3.6.0",
 	"description": "PostHog PHP Library",
 	"keywords": [
 		"posthog"
 	],
-	"homepage": "https://github.com/PostHog/posthog-php",
+	"homepage": "https://github.com/Feniksss/posthog-php",
 	"license": "MIT",
 	"authors": [
 		{
