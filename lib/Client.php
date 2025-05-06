@@ -81,7 +81,7 @@ class Client
         array $options = [],
         ?HttpClient $httpClient = null,
         ?string $personalAPIKey = null,
-        bool $loadFeatureFlags = true,
+        bool $loadFeatureFlags = true
     ) {
         $this->apiKey = $apiKey;
         $this->personalAPIKey = $personalAPIKey;
@@ -195,7 +195,7 @@ class Client
         array $groupProperties = array(),
         bool $onlyEvaluateLocally = false,
         bool $sendFeatureFlagEvents = true
-    ): null | bool {
+    ) {
         $result = $this->getFeatureFlag(
             $key,
             $distinctId,
@@ -232,7 +232,7 @@ class Client
         array $groupProperties = array(),
         bool $onlyEvaluateLocally = false,
         bool $sendFeatureFlagEvents = true
-    ): null | bool | string {
+    ){
         [$personProperties, $groupProperties] = $this->addLocalPersonAndGroupProperties(
             $distinctId,
             $groups,
@@ -325,8 +325,8 @@ class Client
         string $distinctId,
         array $groups = array(),
         array $personProperties = array(),
-        array $groupProperties = array(),
-    ): mixed {
+        array $groupProperties = array()
+    ){
         $results = json_decode(
             $this->flags($distinctId, $groups, $personProperties, $groupProperties),
             true
@@ -362,7 +362,7 @@ class Client
         array $personProperties = array(),
         array $groupProperties = array(),
         bool $onlyEvaluateLocally = false
-    ): array {
+    ){
         [$personProperties, $groupProperties] = $this->addLocalPersonAndGroupProperties(
             $distinctId,
             $groups,
@@ -411,7 +411,7 @@ class Client
         array $groups = array(),
         array $personProperties = array(),
         array $groupProperties = array()
-    ): bool | string {
+    ) {
         if ($featureFlag["ensure_experience_continuity"] ?? false) {
             throw new InconclusiveMatchException("Flag has experience continuity enabled");
         }
@@ -453,7 +453,7 @@ class Client
         array $groups = [],
         array $personProperties = [],
         array $groupProperties = []
-    ): array {
+    ) {
         $response = $this->fetchFlagsResponse($distinctId, $groups, $personProperties, $groupProperties);
         return $response['featureFlags'] ?? [];
     }
@@ -469,7 +469,7 @@ class Client
         array $groups = [],
         array $personProperties = [],
         array $groupProperties = []
-    ): ?array {
+    ){
         return json_decode(
             $this->flags($distinctId, $groups, $personProperties, $groupProperties),
             true
@@ -507,7 +507,7 @@ class Client
         )->getResponse();
     }
 
-    private function normalizeFeatureFlags(string $response): string
+    private function normalizeFeatureFlags(string $response)
     {
         $decoded = json_decode($response, true);
         if (isset($decoded['flags']) && !empty($decoded['flags'])) {
