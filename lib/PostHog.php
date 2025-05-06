@@ -24,7 +24,7 @@ class PostHog
         ?array $options = [],
         ?Client $client = null,
         ?string $personalAPIKey = null
-    ): void {
+    ) {
         if (null === $client) {
             $apiKey = $apiKey ?: getenv(self::ENV_API_KEY);
 
@@ -125,7 +125,7 @@ class PostHog
         array $groupProperties = array(),
         bool $onlyEvaluateLocally = false,
         bool $sendFeatureFlagEvents = true
-    ): null | bool {
+    ){
         self::checkClient();
         return self::$client->isFeatureEnabled(
             $key,
@@ -157,7 +157,7 @@ class PostHog
         array $groupProperties = array(),
         bool $onlyEvaluateLocally = false,
         bool $sendFeatureFlagEvents = true
-    ): null | bool | string {
+    ){
         self::checkClient();
         return self::$client->GetFeatureFlag(
             $key,
@@ -183,8 +183,8 @@ class PostHog
         string $distinctId,
         array $groups = array(),
         array $personProperties = array(),
-        array $groupProperties = array(),
-    ): mixed {
+        array $groupProperties = array()
+    ){
         return self::$client->getFeatureFlagPayload(
             $key,
             $distinctId,
@@ -210,7 +210,7 @@ class PostHog
         array $personProperties = array(),
         array $groupProperties = array(),
         bool $onlyEvaluateLocally = false
-    ): array {
+    ) {
         self::checkClient();
         return self::$client->getAllFlags(
             $distinctId,
@@ -228,7 +228,7 @@ class PostHog
      * @return array
      * @throws Exception
      */
-    public static function fetchFeatureVariants(string $distinctId, array $groups = array()): array
+    public static function fetchFeatureVariants(string $distinctId, array $groups = array())
     {
         self::checkClient();
         return self::$client->fetchFeatureVariants($distinctId, $groups);
@@ -287,7 +287,7 @@ class PostHog
         return self::$client->flush();
     }
 
-    private static function cleanHost(?string $host): string
+    private static function cleanHost(?string $host)
     {
         if (!isset($host)) {
             return $host;
